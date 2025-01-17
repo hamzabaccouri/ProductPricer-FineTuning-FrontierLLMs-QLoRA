@@ -19,28 +19,20 @@ The repository contains three major approaches to solving the product price pred
 The repository is organized as follows:
 
 ```
-ProductPricer-FineTuning-FrontierLLMs-QLoRA/
+FINE-TUNING FRONTIER LARGE LANGUAGE MODELS WITH LORAQLORA/
 │
 ├── helpers/
 │   ├── items.py          # Product data structures
 │   ├── loaders.py        # Data loading utilities
 │   ├── testing.py        # Testing utilities
 │
-├── notebooks/
-│   ├── dataCollection.ipynb               # Collect and preprocess data
-│   ├── ProductPricerBaseModel.ipynb       # Train and evaluate traditional ML models
-│   ├── ProductPricerFrontierLLM.ipynb     # Predict prices using Claude and GPT
-│   ├── FineTuneOpenAIProductPricer.ipynb  # Fine-tune GPT for price prediction
-│
-├── data/
-│   ├── train.pkl                 # Preprocessed training dataset
-│   ├── test.pkl                  # Preprocessed test dataset
-│   ├── fine_tune_train.jsonl     # Training data for fine-tuning GPT
-│   ├── fine_tune_validation.jsonl # Validation data for fine-tuning GPT
-│
 ├── .env                          # API keys for OpenAI, Claude, and Hugging Face
+├── fine_tune_train.jsonl         # Training data for fine-tuning GPT
+├── fine_tune_validation.jsonl    # Validation data for fine-tuning GPT
+├── train.pkl                     # Preprocessed training dataset
+├── test.pkl                      # Preprocessed testing dataset
 ├── requirements.txt              # Python dependencies
-└── README.md                     # Project documentation
+├── README.md                     # Project documentation
 ```
 
 ---
@@ -78,32 +70,26 @@ cd ProductPricer-FineTuning-FrontierLLMs-QLoRA
 
 ## **Usage**
 
-### **1. Data Collection**
-Run the `dataCollection.ipynb` notebook to collect and preprocess data for price prediction. The notebook will generate:
-- `train.pkl`: Preprocessed training dataset
-- `test.pkl`: Preprocessed testing dataset
+### **1. Data Collection and Preprocessing**
+- Use the data provided in `train.pkl` and `test.pkl` to train and evaluate the models.
 
-### **2. Traditional Machine Learning Models**
-Use the `ProductPricerBaseModel.ipynb` notebook to train and evaluate traditional machine learning models like:
-- Linear Regression
-- Random Forest Regressor
-- Gradient Boosting Regressor
+### **2. Training Traditional Machine Learning Models**
+- Utilize the helpers in the `helpers` folder to train traditional machine learning models like:
+  - Linear Regression
+  - Random Forest Regressor
+  - Gradient Boosting Regressor
 
 ### **3. Frontier LLM Predictions**
-Leverage `ProductPricerFrontierLLM.ipynb` to predict product prices using:
-- GPT (OpenAI)
-- Claude (Anthropic)
+- Use the Frontier LLMs (Claude and GPT) with data from `fine_tune_train.jsonl` and `fine_tune_validation.jsonl`.
 
 ### **4. Fine-Tuning GPT**
-Run `FineTuneOpenAIProductPricer.ipynb` to fine-tune GPT models for product price prediction using QLoRA. This step involves:
-- Preparing the data in `fine_tune_train.jsonl` and `fine_tune_validation.jsonl`.
-- Fine-tuning GPT-4O-mini with QLoRA to adapt it for the specific task.
+- Fine-tune GPT using the `fine_tune_train.jsonl` and `fine_tune_validation.jsonl` files with QLoRA to customize the model for product price prediction.
 
 ---
 
 ## **Features**
 
-- **Data Collection**: Gather and preprocess data for price prediction tasks.
+- **Data Preprocessing**: Clean and prepare data for price prediction tasks.
 - **Traditional ML Models**: Establish baseline models using classical machine learning techniques.
 - **Frontier LLMs**: Utilize state-of-the-art models (Claude and GPT) for price prediction.
 - **Fine-Tuning**: Customize GPT-4O-mini using QLoRA for improved task-specific performance.
